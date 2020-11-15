@@ -1,5 +1,5 @@
 /*Credit where credit is due, thanks to https://github.com/isaacs: https://github.com/isaacs/sax-js */
-(function (sax) {
+export const SAX = (function (sax) {
   // wrapper for non-node envs
   sax.parser = function (strict, opt) {
     return new SAXParser(strict, opt);
