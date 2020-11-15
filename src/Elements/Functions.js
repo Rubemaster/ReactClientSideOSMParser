@@ -6,9 +6,13 @@ export const processOsm = (requestAt) => {
     const table = db.createObjectStore("nodes", { keyPath: "id" });
     console.log(db);
   };
-  database.onsuccess = () => {
-    const db = database.result;
-    //console.log(db);
+  database.onsuccess = (e) => {
+    let db = e.target.result;
+    //const transaction=
+
+    console.log(db);
+    db = database.result;
+    console.log(db);
   };
   /*fetch(requestAt).then((response) =>
     response.text().then((text) => {
