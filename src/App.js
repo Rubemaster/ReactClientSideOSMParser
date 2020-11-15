@@ -5,11 +5,15 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.canvas = React.createRef();
+    this.map = React.createRef();
     this.state = { mapWidth: 400, mapHeight: 400 };
   }
 
   componentDidMount() {
-    const loadFile = "kungalv.osm";
+    this.map.current.onchange = (e) => {
+      console.log(this.map.current);
+    };
+    /*const loadFile = "map.osm";
     ProcessOSM(
       "https://rubenrick.online/resources/load_file.php?file_name=" + loadFile
     );
@@ -209,11 +213,12 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <canvas
+        <input ref={this.map} type="file" id="myFile" name="filename" />
+        {/*<canvas
           ref={this.canvas}
           width={this.state.mapWidth}
           height={this.state.mapHeight}
-        />
+        />*/}
       </div>
     );
   }

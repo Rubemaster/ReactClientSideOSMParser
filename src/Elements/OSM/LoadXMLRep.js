@@ -1,4 +1,4 @@
-export const Get = (url) =>
+export const LoadXMLRep = (url) =>
   new Promise((resolve) => {
     fetch(url)
       .then((response) => {
