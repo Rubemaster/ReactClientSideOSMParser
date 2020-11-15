@@ -1,0 +1,24 @@
+{
+  "list": [
+    "road",
+    "raceway",
+    "escape",
+    "bus_guideway",
+    "track",
+    "pedestrian",
+    "service",
+    "living_street",
+    "tertiary_link",
+    "secondary_link",
+    "primary_link",
+    "trunk_link",
+    "motorway_link",
+    "residential",
+    "unclassified",
+    "tertiary",
+    "secondary",
+    "primary",
+    "trunk",
+    "motorway"
+  ]
+}
