@@ -10,13 +10,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.map.current.onchange = (e) => {
-      console.log(this.map.current);
-    };
-    /*const loadFile = "map.osm";
-    ProcessOSM(
-      "https://rubenrick.online/resources/load_file.php?file_name=" + loadFile
-    );
+    ProcessOSM(this.map);
 
     /*fetch(
       "https://rubenrick.online/resources/load_file.php?file_name=" + loadFile
@@ -213,7 +207,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <input ref={this.map} type="file" id="myFile" name="filename" />
+        <input
+          ref={this.map}
+          type="file"
+          id="myFile"
+          name="filename"
+          accept=".osm"
+        />
         {/*<canvas
           ref={this.canvas}
           width={this.state.mapWidth}

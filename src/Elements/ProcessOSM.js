@@ -1,12 +1,15 @@
 import * as OSM from "./OSM/OSM.js";
-import * as FS from "./Indexed/Indexed";
-export const ProcessOSM = async (url) => {
-  const db = await FS.Open("RoadMap", "nodes");
-  const push = await FS.Put(db, { id: 0, message: "big moon" });
-  const load = await FS.Get(db, 0);
+import * as Indexed from "./Indexed/Indexed.js";
+import * as FileStream from "./FileStream/FileStream.js";
+export const ProcessOSM = async (MapRef) => {
+  const MapFile = await FileStream.Open(MapRef);
+  console.log(MapFile);
+  /*const db = await Indexed.Open("RoadMap", "nodes");
+  const push = await Indexed.Put(db, { id: 0, message: "big moon" });
+  const load = await Indexed.Get(db, 0);
   console.log(push);
   console.log(load);
-  //const OSMXml = await OSM.LoadXMLRep(url);
+  //const OSMXml = await FileStream.LoadXMLRep(url);
   //console.log(OSMXml);
   /*
 
