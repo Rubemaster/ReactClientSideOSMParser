@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import { processOsm } from "./Elements/Functions.js";
+import { ProcessOSM } from "./Elements/ProcessOSM";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const loadFile = "kungalv.osm";
-    processOsm(
+    ProcessOSM(
       "https://rubenrick.online/resources/load_file.php?file_name=" + loadFile
     );
 
