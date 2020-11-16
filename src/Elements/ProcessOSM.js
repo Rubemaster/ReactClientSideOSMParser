@@ -2,14 +2,15 @@
 //import * as Indexed from "./Indexed/Indexed.js";
 import * as FileStream from "./FileStream/FileStream.js";
 export const ProcessOSM = async (MapRef) => {
-  const fr = new FileReader();
-  console.log(fr);
   const stream = FileStream.SAX.SetupStream();
   //console.log(stream);
   FileStream.SAX.AddTagListener(stream);
   const MapFile = await FileStream.Open(MapRef);
-  //console.log(MapFile.stream());
   FileStream.SAX.StreamFile(MapFile, stream);
+  const reader = MapFile.stream().getReader();
+  reader.read().then(function processText({ done, value }) {
+    console.log(value);
+  });
   /*const db = await Indexed.Open("RoadMap", "nodes");
   const push = await Indexed.Put(db, { id: 0, message: "big moon" });
   const load = await Indexed.Get(db, 0);
