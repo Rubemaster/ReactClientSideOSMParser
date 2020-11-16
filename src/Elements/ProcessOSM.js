@@ -9,7 +9,10 @@ export const ProcessOSM = async (MapRef) => {
   FileStream.SAX.StreamFile(MapFile, stream);
   const reader = MapFile.stream().getReader();
   reader.read().then(function processText({ done, value }) {
-    if(done){console.log("done")}
+    if (done) {
+      console.log("done");
+    }
+    return reader.read().then(processText);
   });
   /*const db = await Indexed.Open("RoadMap", "nodes");
   const push = await Indexed.Put(db, { id: 0, message: "big moon" });
