@@ -1,6 +1,5 @@
-import { SAX } from "./../SAX/SAX.js";
-export const StreamXML = () => {
-  console.log("running");
+export const SetupStream = () => {
+  return require("./lib/sax").createStream(true);
 };
 /*var sax = require("./lib/sax"),
   strict = true, // set to false for html-mode
