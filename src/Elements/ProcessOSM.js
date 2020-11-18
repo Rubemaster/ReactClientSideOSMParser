@@ -6,7 +6,8 @@ export const ProcessOSM = async (MapRef) => {
   //console.log(stream);
   FileStream.SAX.AddTagListener(stream);
   const MapFile = await FileStream.Open(MapRef);
-  FileStream.SAX.StreamFile(MapFile.stream(), stream);
+  await FileStream.SAX.StreamFile(MapFile.stream(), stream);
+  console.log("TASK COMPLETED");
   /*const reader = MapFile.stream();
 
   /*reader.pipeThrough((e) => {
