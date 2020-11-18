@@ -6,13 +6,11 @@ export const ProcessOSM = async (MapRef) => {
   //console.log(stream);
   FileStream.SAX.AddTagListener(stream);
   const MapFile = await FileStream.Open(MapRef);
-  FileStream.SAX.StreamFile(MapFile, stream);
-  const reader = MapFile.stream().getReader();
-  reader.read().then(function processText({ done, value }) {
-    if (done) {
-      console.log("done");
-    }
-    return reader.read().then(processText);
+  FileStream.SAX.StreamFile(MapFile.stream(), stream);
+  /*const reader = MapFile.stream();
+
+  /*reader.pipeThrough((e) => {
+    console.log(e);
   });
   /*const db = await Indexed.Open("RoadMap", "nodes");
   const push = await Indexed.Put(db, { id: 0, message: "big moon" });
