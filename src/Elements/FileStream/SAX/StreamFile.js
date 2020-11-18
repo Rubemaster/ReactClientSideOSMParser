@@ -2,5 +2,7 @@ export const StreamFile = (file, stream) => {
   console.log(file);
   let targetReadBy = new WritableStream();
   console.log(targetReadBy);
-  file.pipeThrough(targetReadBy.getWriter());
+  console.log(file.getReader());
+  const queueingStrategy = new ByteLengthQueuingStrategy({ highWaterMark: 1 });
+  console.log(queueingStrategy);
 };
