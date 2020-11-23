@@ -1,5 +1,4 @@
 export const Put = (db, object) => {
-  console.log(db);
   const load = db.table.put(object);
   return new Promise((resolve) => {
     load.onsuccess = (e) => {
