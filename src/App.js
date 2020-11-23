@@ -212,7 +212,7 @@ export default class App extends React.Component {
           type="file"
           id="myFile"
           name="filename"
-          accept=".osm .pbf"
+          accept=".osm,.pbf"
         />
         {/*<canvas
           ref={this.canvas}
