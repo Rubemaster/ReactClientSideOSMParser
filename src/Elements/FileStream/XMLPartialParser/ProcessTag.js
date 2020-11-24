@@ -20,8 +20,5 @@ export const ProcessTag = (tag, putStash) => {
     }
     e.at++;
   }
-  putStash.action(putStash.db, {
-    id: 0, //make dis iterate
-    tag: { name: e.name, attributes: e.attributes }
-  });
+  console.log({ name: e.name, attributes: e.attributes });
 };

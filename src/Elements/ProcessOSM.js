@@ -1,15 +1,13 @@
 //import * as OSM from "./OSM/OSM.js";
 import * as Indexed from "./Indexed/Indexed.js";
 import * as FileStream from "./FileStream/FileStream.js";
-export const ProcessOSM = async (MapRef) => {
-  const db = await Indexed.Open("RoadMap", "nodes");
-  FileStream.XMLPartialParser.MovingWindow({ action: Indexed.Put, db: db });
-  /*const stream = FileStream.SAX.SetupStream();
+export const ProcessOSM = async (MapRef, TextRef, progressRef) => {
+  //const db = await Indexed.Open("RoadMap", "nodes");
+  //FileStream.XMLPartialParser.MovingWindow({ action: Indexed.Put, db: db });
   //console.log(stream);
-  FileStream.SAX.AddTagListener(stream);
   const MapFile = await FileStream.Open(MapRef);
-  await FileStream.SAX.StreamFile(MapFile.stream(), stream);
-  console.log("TASK COMPLETED");
+
+  await FileStream.SAX.StreamFile(MapFile.stream(), TextRef, progressRef);
   /*const reader = MapFile.stream();
 
   /*reader.pipeThrough((e) => {

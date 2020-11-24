@@ -6,11 +6,15 @@ export default class App extends React.Component {
     super(props);
     this.canvas = React.createRef();
     this.map = React.createRef();
-    this.state = { mapWidth: 400, mapHeight: 400 };
+    this.progress = React.createRef();
+    this.state = { mapWidth: 400, mapHeight: 400, textVal: " " };
   }
 
   componentDidMount() {
-    ProcessOSM(this.map);
+    const setText = (newVal) => {
+      this.setState({ textVal: newVal });
+    };
+    ProcessOSM(this.map, setText, this.progress);
 
     /*fetch(
       "https://rubenrick.online/resources/load_file.php?file_name=" + loadFile
@@ -214,6 +218,10 @@ export default class App extends React.Component {
           name="filename"
           accept=".osm,.pbf"
         />
+        <p style={{ fontFamily: "Courier New" }}>{this.state.textVal}</p>
+        <progress ref={this.progress} value="0" max="100">
+          {" "}
+        </progress>
         {/*<canvas
           ref={this.canvas}
           width={this.state.mapWidth}
