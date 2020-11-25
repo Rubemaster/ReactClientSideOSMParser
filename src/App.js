@@ -7,14 +7,22 @@ export default class App extends React.Component {
     this.canvas = React.createRef();
     this.map = React.createRef();
     this.progress = React.createRef();
-    this.state = { mapWidth: 400, mapHeight: 400, textVal: " " };
+    this.state = {
+      mapWidth: 400,
+      mapHeight: 400,
+      textVal: " ",
+      toggleLoadScreen: false
+    };
   }
 
   componentDidMount() {
     const setText = (newVal) => {
       this.setState({ textVal: newVal });
     };
-    ProcessOSM(this.map, setText, this.progress);
+    const toggleLoad = (newVal) => {
+      this.setState({ toggleLoadScreen: newVal });
+    };
+    ProcessOSM(this.map, setText, this.progress, toggleLoad);
 
     /*fetch(
       "https://rubenrick.online/resources/load_file.php?file_name=" + loadFile
@@ -217,11 +225,24 @@ export default class App extends React.Component {
           id="myFile"
           name="filename"
           accept=".osm,.pbf"
+          style={
+            this.state.toggleLoadScreen
+              ? { position: "fixed", visibility: "hidden" }
+              : { position: "relative", visibility: "visible" }
+          }
         />
-        <p style={{ fontFamily: "Courier New" }}>{this.state.textVal}</p>
-        <progress ref={this.progress} value="0" max="100">
-          {" "}
-        </progress>
+        <div
+          style={
+            this.state.toggleLoadScreen
+              ? { position: "relative", visibility: "visible" }
+              : { position: "fixed", visibility: "hidden" }
+          }
+        >
+          <p style={{ fontFamily: "Courier New" }}>{this.state.textVal}</p>
+          <progress ref={this.progress} value="0" max="100">
+            {" "}
+          </progress>
+        </div>
         {/*<canvas
           ref={this.canvas}
           width={this.state.mapWidth}
