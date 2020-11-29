@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const setText = (newVal) => {
-      //bad;
+      //bad changes;
       this.setState({ textVal: newVal });
     };
     const toggleLoad = (newVal) => {
